@@ -1,1 +1,285 @@
+Project: Personal Household Expense Management & Analysis
+Real-Life Problem Statement
+Every household makes a large number of expenses every day. These may include Kirana and groceries, vegetables, milk, electricity, water, gas, mobile and internet bills, building maintenance, property taxes, medical and hospital expenses, transportation, petrol, restaurants, hotels, tourism, education, clothing, insurance, EMIs, entertainment, domestic help, gifts and many other expenses.
+In many households, these expenses are recorded in notebooks, spreadsheets, bank statements or are simply remembered. As a result, family members may not have a clear understanding of:
+•	Where their money is going
+•	Which expense categories consume the most money
+•	Which expenses are increasing
+•	How much is spent every month
+•	How much is spent on recurring expenses
+•	Which expenses are essential and non-essential
+•	Which payment methods are used most frequently
+•	Which expenses need attention or control
+You are required to develop a Personal Household Expense Management and Analysis System using PostgreSQL.
+The objective is not merely to create tables and write SQL queries. You must use real household expense data for at least three completed months, analyze the data, identify meaningful patterns and provide practical recommendations based on your findings.
+________________________________________
+1. Collect Real Household Expense Data
+Each student/team must collect at least three months of past household expense data.
+For example:
+April, May and June
+The three months should preferably be consecutive completed months.
+The data may be collected from:
+•	Household records
+•	Expense notebooks
+•	Spreadsheets
+•	Bills
+•	Receipts
+•	Bank statements
+•	Other available household records
+Students should collect only the information necessary for the project.
+Suggested information
+For each expense, collect:
+•	Date
+•	Expense category
+•	Expense subcategory
+•	Amount
+•	Family member associated with the expense
+•	Vendor/shop/service provider, where available
+•	Payment method
+•	Description
+•	Recurring or non-recurring
+•	Paid/Pending status, where applicable
+Privacy and Security
+Do not enter sensitive personal financial information into the database.
+Students must not include:
+•	Bank account numbers
+•	Credit/debit card numbers
+•	UPI IDs
+•	Passwords
+•	PINs
+•	Account credentials
+Names and vendor information may be anonymized where required. Amounts may also be approximated if necessary.
+________________________________________
+2. Business Understanding
+Before writing SQL, understand the household's actual problem.
+Prepare a brief Business Understanding document answering:
+1.	Why does the household need an expense-management system?
+2.	What are the major types of expenses in the household?
+3.	Which expenses occur daily?
+4.	Which expenses occur monthly?
+5.	Which expenses occur occasionally?
+6.	What problems does the family face while tracking expenses?
+7.	What decisions does the family want to make after analyzing the data?
+________________________________________
+3. Project Objectives
+The database should help the family to:
+1.	Maintain household expenses systematically.
+2.	Categorize different types of expenses.
+3.	Track expenses associated with family members.
+4.	Record different payment methods.
+5.	Track vendors/service providers.
+6.	Identify high-value expenses.
+7.	Understand recurring expenses.
+8.	Compare expenditure across three months.
+9.	Identify major spending areas.
+10.	Find opportunities to control unnecessary expenditure.
+________________________________________
+4. Data Understanding
+Before creating tables, understand the data that you have collected.
+Identify:
+•	Number of records
+•	Three-month period covered
+•	Major expense categories
+•	Major expense subcategories
+•	Family members
+•	Vendors
+•	Payment methods
+•	Recurring expenses
+•	Pending expenses
+Prepare a brief Data Understanding section explaining what information is available and what challenges you observed in the data.
+________________________________________
+5. Database Design
+Design a relational database using PostgreSQL.
+You may create tables such as:
+expense_categories
+expense_subcategories
+family_members
+payment_methods
+vendors
+expenses
+You may add additional tables if required.
+Prepare an ER Diagram showing:
+•	Tables
+•	Primary keys
+•	Foreign keys
+•	Relationships
+________________________________________
+6. Data Types
+Select appropriate PostgreSQL data types for every column.
+For example:
+Attribute	Possible Data Type
+Expense ID	INTEGER / BIGINT
+Expense Date	DATE
+Amount	NUMERIC(12,2)
+Name	VARCHAR
+Description	VARCHAR / TEXT
+Recurring	BOOLEAN
+Date of Birth	DATE
+Students must be able to explain why a particular data type was selected.
+________________________________________
+7. Primary Keys and Foreign Keys
+Identify suitable primary keys for every table.
+For example:
+expense_categories → category_id
+expense_subcategories → subcategory_id
+family_members → member_id
+payment_methods → payment_method_id
+vendors → vendor_id
+expenses → expense_id
+Identify appropriate foreign keys.
+For example:
+expense_subcategories.category_id
+        ↓
+expense_categories.category_id
+and:
+expenses.subcategory_id
+expenses.member_id
+expenses.vendor_id
+expenses.payment_method_id
+Students should explain why these relationships are necessary.
+________________________________________
+8. Constraints
+Use appropriate constraints such as:
+PRIMARY KEY
+FOREIGN KEY
+NOT NULL
+UNIQUE
+CHECK
+DEFAULT
+For example:
+CHECK (amount > 0)
+Students should identify at least five real-life situations where constraints are useful.
+________________________________________
+9. CREATE
+Create the PostgreSQL database:
+household_expenses
+Create all required tables with:
+•	Appropriate data types
+•	Primary keys
+•	Foreign keys
+•	Constraints
+________________________________________
+10. INSERT
+Insert the collected three-month household data.
+Minimum expectation
+I recommend:
+•	At least 3 months
+•	At least 50 expense transactions
+•	At least 5 expense categories
+•	At least 10 subcategories
+•	At least 3 family members, where applicable
+•	At least 4 payment methods
+•	At least 5 vendors, where applicable
+The objective is to have enough data to discover meaningful patterns.
+________________________________________
+11. UPDATE
+Demonstrate realistic situations where information needs to be corrected.
+For example:
+Situation 1
+An expense was entered with the wrong amount.
+Correct the expense amount.
+Situation 2
+An expense was initially marked as pending but has now been paid.
+Update its payment status.
+Situation 3
+A vendor name was entered incorrectly.
+Correct the vendor information.
+Situation 4
+An expense was incorrectly marked as non-recurring.
+Correct the record.
+Students should show the record before and after UPDATE.
+________________________________________
+12. DELETE
+Demonstrate realistic deletion scenarios.
+Situation 1
+An expense was accidentally entered twice.
+Identify and remove the duplicate transaction.
+Situation 2
+A test transaction was entered while developing the database.
+Delete the test transaction.
+Situation 3
+A vendor was entered incorrectly and is not associated with any expense.
+Remove the vendor.
+Important Question
+Explain:
+Why might PostgreSQL prevent you from deleting a vendor that is referenced by an expense?
+________________________________________
+13. ALTER
+The family realizes after using the database that some additional information is required.
+Perform appropriate ALTER TABLE operations.
+For example:
+Requirement 1
+The family wants to know whether an expense is Essential or Non-Essential.
+Add an appropriate column.
+Requirement 2
+The family wants to record the location where an expense occurred.
+Add an appropriate column.
+Requirement 3
+The family wants additional information about vendors.
+Add an appropriate column to the vendors table.
+Students should demonstrate at least three ALTER operations.
+________________________________________
+14. DROP
+Create a temporary table such as:
+test_expenses
+Use it for testing and then remove it using:
+DROP TABLE
+Explain the difference between:
+DELETE
+DROP
+________________________________________
+15. Three-Month Household Expense Analysis
+This is the most important part of the project.
+Students must use their actual three-month data to discover spending patterns.
+A. Overall Spending
+Answer:
+1.	What is the total household expenditure during the three months?
+2.	What is the average expense per transaction?
+3.	What is the highest individual expense?
+4.	What is the lowest individual expense?
+5.	How many expense transactions were recorded?
+________________________________________
+B. Month-wise Analysis
+Compare the three months.
+6.	Which month had the highest total expenditure?
+7.	Which month had the lowest total expenditure?
+8.	Did household expenditure increase or decrease from the first month to the third month?
+9.	Which month had the highest number of transactions?
+10.	Identify any significant change in spending between the three months.
+________________________________________
+C. Expense Pattern Analysis
+11.	What are the major types of expenses in the household?
+12.	Which expense type consumed the largest amount?
+13.	Which expense type occurred most frequently?
+14.	Identify the top three areas where the household spends the most.
+15.	Identify expenses that occur frequently but involve relatively small amounts.
+________________________________________
+D. Recurring Expense Analysis
+16.	Identify the household's recurring expenses.
+17.	How much money is spent on recurring expenses during the three months?
+18.	Which recurring expenses should the family review?
+19.	Identify recurring expenses whose amounts are relatively high.
+________________________________________
+E. Payment Behaviour
+20.	Which payment method is used most frequently?
+21.	Which payment method accounts for the largest amount of expenditure?
+22.	How much is spent through cash?
+23.	How much is spent through digital payment methods?
+24.	Identify high-value transactions made through digital payment methods.
+________________________________________
+F. High-Value and Unusual Expenses
+25.	Identify expenses above a threshold that you consider significant for your household.
+26.	Identify unusually high expenses.
+27.	Identify expenses that occurred only once but had a significant financial impact.
+28.	Investigate the reason for at least three significant/high-value expenses.
+________________________________________
+16. Identify Insights
+After completing the SQL analysis, students must identify at least five meaningful insights.
+For example:
+"Household expenditure increased significantly in the third month."
+"Grocery transactions are frequent and represent a major part of monthly spending."
+"Recurring expenses account for a significant portion of total expenditure."
+"Medical expenses were unusually high in one particular month."
+"Digital payments are used for most household transactions."
+These are only examples.
 
